@@ -1,17 +1,10 @@
 import React from 'react';
-import render from 'react-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Books from './components/redux/books/Books';
-import Categories from './components/redux/categories/Categories';
+import { render } from 'react-dom';
+import App from './App';
 
 render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Books />} />
-        <Route path="/categories" element={<Categories />} />
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
   document.getElementById('root'),
 );
