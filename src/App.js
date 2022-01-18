@@ -2,9 +2,9 @@ import React from 'react';
 import {
   BrowserRouter, Routes, Route,
 } from 'react-router-dom';
-import Navbar from './components/redux/navbar/Navbar';
-import Books from './components/redux/books/Books';
-import Categories from './components/redux/categories/Categories';
+import Navbar from './components/navbar/Navbar';
+import Books from './components/books/Books';
+import Categories from './components/categories/Categories';
 
 const App = () => (
   <div className="Bookstore">
