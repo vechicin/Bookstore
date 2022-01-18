@@ -1,4 +1,6 @@
 import React from 'react';
+import NewBook from '../add-books/addBooks';
+import bookInfo from '../remove-books/removeBooks';
 
 const Books = () => (
   <div className="book-list">

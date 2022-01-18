@@ -9,25 +9,10 @@ import Categories from './components/categories/Categories';
 const App = () => (
   <div className="Bookstore">
     <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={(
-            <>
-              <Navbar />
-              <Books />
-            </>
-        )}
-        />
-        <Route
-          path="/categories"
-          element={(
-            <>
-              <Navbar />
-              <Categories />
-            </>
-        )}
-        />
+        <Route path="/" element={(<Books />)} />
+        <Route path="/categories" element={(<Categories />)} />
       </Routes>
     </BrowserRouter>
   </div>
