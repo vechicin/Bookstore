@@ -1,17 +1,26 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import NewBook from '../add-books/addBooks';
-import bookInfo from '../remove-books/removeBooks';
+import BooksInfo from '../books-info/booksInfo';
 
-const Books = () => (
-  <div className="book-list">
-    <ul className="book-list-container" />
-    <button type="button">Remove</button>
-    <form>
-      <input />
-      <input />
-      <button type="submit">Add book</button>
-    </form>
-  </div>
-);
+const Books = () => {
+  const bookList = useSelector((state) => state.booksReducer);
+
+  return (
+    <section className="books-section">
+      <div id="books-list">
+        {bookList.map((book) => (
+          <BooksInfo
+            title={book.title}
+            author={book.author}
+            id={book.id}
+            key={book.id}
+          />
+        ))}
+      </div>
+      <NewBook />
+    </section>
+  );
+};
 
 export default Books;

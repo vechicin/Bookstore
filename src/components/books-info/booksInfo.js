@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeBook } from '../../redux/books/books';
 
-const bookInfo = (props) => {
+const BooksInfo = (props) => {
   const {
     title, author, category, id,
   } = props;
@@ -23,4 +24,15 @@ const bookInfo = (props) => {
   );
 };
 
-export default bookInfo;
+BooksInfo.defaultProps = {
+  category: '',
+};
+
+BooksInfo.propTypes = {
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  category: PropTypes.string,
+};
+
+export default BooksInfo;
