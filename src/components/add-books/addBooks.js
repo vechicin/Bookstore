@@ -7,6 +7,7 @@ const NewBook = () => {
   const [state, setState] = useState({
     title: '',
     author: '',
+    category: '',
   });
 
   const handleChange = (event) => {
@@ -26,6 +27,7 @@ const NewBook = () => {
         id: v4(),
         title: state.title,
         author: state.author,
+        category: state.category,
       };
 
       dispatch(addBook(newBook));
@@ -33,6 +35,7 @@ const NewBook = () => {
       setState({
         title: '',
         author: '',
+        category: '',
       });
     }
   };
@@ -54,6 +57,14 @@ const NewBook = () => {
         name="author"
         placeholder="Please enter author's name"
         value={state.author}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        id="category"
+        name="category"
+        placeholder="Please enter book's category"
+        value={state.category}
         onChange={handleChange}
       />
       <input type="submit" value="Add book" onClick={submitBookToStore} />

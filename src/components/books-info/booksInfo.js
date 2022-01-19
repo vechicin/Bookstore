@@ -16,9 +16,9 @@ const BooksInfo = (props) => {
 
   return (
     <li className="book-info">
-      <p className="category">{category}</p>
       <p className="title">{title}</p>
       <p className="author">{author}</p>
+      <p className="category">{category}</p>
       <button type="button" onClick={remove}>Remove</button>
     </li>
   );

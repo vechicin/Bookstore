@@ -14,6 +14,7 @@ const Books = () => {
             <BooksInfo
               title={book.title}
               author={book.author}
+              category={book.category}
               id={book.id}
               key={book.id}
             />
