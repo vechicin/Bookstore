@@ -15,12 +15,12 @@ const BooksInfo = (props) => {
   };
 
   return (
-    <div className="book-info">
+    <li className="book-info">
       <p className="category">{category}</p>
       <p className="title">{title}</p>
       <p className="author">{author}</p>
       <button type="button" onClick={remove}>Remove</button>
-    </div>
+    </li>
   );
 };
 

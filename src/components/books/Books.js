@@ -9,14 +9,16 @@ const Books = () => {
   return (
     <section className="books-section">
       <div id="books-list">
-        {bookList.map((book) => (
-          <BooksInfo
-            title={book.title}
-            author={book.author}
-            id={book.id}
-            key={book.id}
-          />
-        ))}
+        <ul className="list-container">
+          {bookList.map((book) => (
+            <BooksInfo
+              title={book.title}
+              author={book.author}
+              id={book.id}
+              key={book.id}
+            />
+          ))}
+        </ul>
       </div>
       <NewBook />
     </section>
