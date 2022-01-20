@@ -4,40 +4,6 @@ const FETCH_BOOK = 'bookStore/books/FETCH_BOOK';
 const apiUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QKoyZOzmkUQhnurV30Gv/books';
 const initialState = [];
 
-const addBook = (book) => async (dispatch) => {
-  await postingBook(book);
-  dispatch({
-    type: ADD_BOOK,
-    payload: book,
-  });
-};
-
-const removeBook = (id) => async (dispatch) => {
-  await deletingBook(id);
-  dispatch({
-    type: REMOVE_BOOK,
-    payload: id,
-  });
-};
-
-const fetchBook = () => async (dispatch) => {
-  const data = await fetchingBook();
-  const books = [];
-  [...Object.entries(data)].forEach((item) => {
-    const book = {
-      item_id: item[0],
-      title: item[1][0].title,
-      category: item[1][0].category,
-    };
-    books.push(book);
-  });
-
-  dispatch({
-    type: FETCH_BOOK,
-    payload: books,
-  });
-};
-
 const fetchingBook = async () => {
   const response = await fetch(apiUrl).then((data) => data.json());
   return response;
@@ -56,6 +22,40 @@ const postingBook = async (book) => {
 const deletingBook = async (id) => {
   await fetch(`${apiUrl}/${id}`, {
     method: 'DELETE',
+  });
+};
+
+export const addBook = (book) => async (dispatch) => {
+  await postingBook(book);
+  dispatch({
+    type: ADD_BOOK,
+    payload: book,
+  });
+};
+
+export const removeBook = (id) => async (dispatch) => {
+  await deletingBook(id);
+  dispatch({
+    type: REMOVE_BOOK,
+    payload: id,
+  });
+};
+
+export const fetchBook = () => async (dispatch) => {
+  const data = await fetchingBook();
+  const books = [];
+  [...Object.entries(data)].forEach((item) => {
+    const book = {
+      item_id: item[0],
+      title: item[1][0].title,
+      category: item[1][0].category,
+    };
+    books.push(book);
+  });
+
+  dispatch({
+    type: FETCH_BOOK,
+    payload: books,
   });
 };
 

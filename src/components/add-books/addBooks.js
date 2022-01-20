@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 } from 'uuid';
-import { postingBook } from '../../redux/books/books';
+import { addBook } from '../../redux/books/books';
 
 const NewBook = () => {
   const [state, setState] = useState({
     title: '',
-    author: '',
     category: '',
     item_id: '',
   });
+
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     setState({
@@ -18,8 +19,6 @@ const NewBook = () => {
     });
   };
 
-  const dispatch = useDispatch();
-
   const submitBookToStore = (e) => {
     e.preventDefault();
 
@@ -27,15 +26,13 @@ const NewBook = () => {
       const newBook = {
         item_id: v4(),
         title: state.title,
-        author: state.author,
         category: state.category,
       };
 
-      dispatch(postingBook(newBook));
+      dispatch(addBook(newBook));
 
       setState({
         title: '',
-        author: '',
         category: '',
         item_id: '',
       });

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchingBook } from '../../redux/books/books';
+import { fetchBook } from '../../redux/books/books';
 import store from '../../redux/configureStore';
 import NewBook from '../add-books/addBooks';
 import BooksInfo from '../books-info/booksInfo';
@@ -11,7 +11,7 @@ const Books = () => {
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    dispatch(fetchingBook());
+    dispatch(fetchBook());
   }, [dispatch]);
 
   useEffect(() => {
@@ -25,7 +25,6 @@ const Books = () => {
           {books.map((book) => (
             <BooksInfo
               title={book.title}
-              author={book.author}
               category={book.category}
               id={book.item_id}
               key={book.item_id}
@@ -34,7 +33,7 @@ const Books = () => {
         </ul>
       </div>
       <NewBook />
-      <button type="button" onClick={() => dispatch(fetchingBook())}>Download</button>
+      <button type="button" onClick={() => dispatch(fetchBook())}>Download</button>
     </section>
   );
 };
