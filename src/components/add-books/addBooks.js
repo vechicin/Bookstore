@@ -8,6 +8,7 @@ const NewBook = () => {
     title: '',
     author: '',
     category: '',
+    item_id: '',
   });
 
   const handleChange = (event) => {
@@ -28,6 +29,7 @@ const NewBook = () => {
         title: state.title,
         author: state.author,
         category: state.category,
+        item_id: state.item_id,
       };
 
       dispatch(postingBook(newBook));
@@ -36,6 +38,7 @@ const NewBook = () => {
         title: '',
         author: '',
         category: '',
+        item_id: '',
       });
     }
   };
