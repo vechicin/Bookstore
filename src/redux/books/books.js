@@ -1,62 +1,89 @@
 const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
 const FETCH_BOOK = 'bookStore/books/FETCH_BOOK';
-const initialState = {
-  books: [],
-};
-
 const apiUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QKoyZOzmkUQhnurV30Gv/books';
 
-const addBook = (book) => (dispatch) => fetch(apiUrl, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(book),
-})
-  .then((response) => response.text())
-  .then((data) => dispatch({ type: ADD_BOOK, book, data }));
+const createBook = (item_id, title, category) => ({
+  item_id,
+  title,
+  category,
+  author: '',
+});
 
-const removeBook = (itemId) => (dispatch) => fetch(`${apiUrl}/${itemId}`, {
-  method: 'DELETE',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ item_id: itemId }),
-})
-  .then((response) => response.text())
-  .then((data) => dispatch({ type: REMOVE_BOOK, item_id: itemId, data }));
+const addBook = (payload) => ({
+  type: ADD_BOOK,
+  payload,
+});
 
-const fetchBook = () => (dispatch) => fetch(apiUrl, {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
+const removeBook = (id) => ({
+  type: REMOVE_BOOK,
+  payload: {
+    id,
   },
-})
-  .then((response) => console.log(response.json()))
-  .then((data) => dispatch({ type: FETCH_BOOK, data }));
+});
 
-const reducer = (state = initialState, action) => {
+const fetchBook = (payload) => ({
+  type: FETCH_BOOK,
+  payload,
+});
+
+const fetchingBook = () => async (dispatch) => {
+  const response = await fetch(apiUrl, {
+    method: 'GET',
+  });
+  try {
+    const data = await response.json();
+    dispatch(fetchBook(data));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const postingBook = (book) => async (dispatch) => {
+  dispatch(addBook(book));
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(book),
+  });
+  try {
+    console.log(await response.text());
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const deletingBook = (id) => async (dispatch) => {
+  dispatch(removeBook(id));
+  const response = await fetch(`${apiUrl}/${id}`, {
+    method: 'DELETE',
+  });
+  try {
+    console.log(await response.text());
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const reducer = (state = [], action) => {
   switch (action.type) {
-    case FETCH_BOOK: {
-      const list = [];
-      Object.keys(action.data).forEach((id) => {
-        list.push({ item_id: id, ...action.data[id][0] });
-      });
-      return {
-        ...state,
-        books: [...state.books, ...list],
-      };
-    }
-
     case ADD_BOOK:
-      return {
-        ...state,
-        books: [...state.books, action.book],
-      };
+      const { item_id, title, category } = action.payload;
+      return [...state, createBook(item_id, title, category)];
 
     case REMOVE_BOOK:
-      return state.filter((book) => book.id !== action.id);
+      return state.filter((book) => book.item_id !== action.payload.id);
+
+    case FETCH_BOOK:
+      const updatedState = [];
+      Object.keys(action.payload).forEach((keys, id) => {
+        updatedState.push(createBook(
+          keys,
+          Object.values(action.payload)[id][0].title,
+          Object.values(action.payload)[id][0].category,
+        ));
+      });
+      return updatedState;
 
     default:
       return state;
@@ -64,4 +91,6 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
-export { addBook, removeBook, fetchBook };
+export {
+  addBook, removeBook, fetchBook, fetchingBook, postingBook, deletingBook,
+};
