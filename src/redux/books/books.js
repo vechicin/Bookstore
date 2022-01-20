@@ -28,6 +28,15 @@ const removeBook = (itemId) => (dispatch) => fetch(`${apiUrl}/${itemId}`, {
   .then((response) => response.text())
   .then((data) => dispatch({ type: REMOVE_BOOK, item_id: itemId, data }));
 
+const fetchBook = () => (dispatch) => fetch(apiUrl, {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+  .then((response) => console.log(response.json()))
+  .then((data) => dispatch({ type: FETCH_BOOK, data }));
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
@@ -42,4 +51,4 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
-export { addBook, removeBook };
+export { addBook, removeBook, fetchBook };
