@@ -48,24 +48,16 @@ const NewBook = () => {
         type="text"
         id="book-name"
         name="title"
-        placeholder="Please enter book's title"
+        placeholder="Enter book's title"
         value={state.title}
         onChange={handleChange}
         required
       />
       <input
         type="text"
-        id="author-name"
-        name="author"
-        placeholder="Please enter author's name"
-        value={state.author}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
         id="category"
         name="category"
-        placeholder="Please enter book's category"
+        placeholder="Enter book's category"
         value={state.category}
         onChange={handleChange}
       />
