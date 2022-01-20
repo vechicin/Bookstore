@@ -16,7 +16,7 @@ const Books = () => {
     <section className="books-section">
       <div id="books-list">
         <ul className="list-container">
-          {bookList.map((book) => (
+          {bookList.books.map((book) => (
             <BooksInfo
               title={book.title}
               author={book.author}
