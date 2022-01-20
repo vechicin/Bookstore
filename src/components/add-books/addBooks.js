@@ -25,11 +25,10 @@ const NewBook = () => {
 
     if (state.title) {
       const newBook = {
-        id: v4(),
+        item_id: v4(),
         title: state.title,
         author: state.author,
         category: state.category,
-        item_id: state.item_id,
       };
 
       dispatch(postingBook(newBook));
