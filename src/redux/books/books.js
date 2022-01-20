@@ -5,15 +5,28 @@ const initialState = [];
 
 const apiUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QKoyZOzmkUQhnurV30Gv/books';
 
-const addBook = (payload) => ({
-  type: ADD_BOOK,
-  payload,
-});
+const addBook = () => async (dispatch, getState) => {
+  const books = getState();
+  await fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(books),
+  })
+    .then((response) => response.text())
+    .then((data) => dispatch({ type: ADD_BOOK, data }));
+};
 
-const removeBook = (id) => ({
-  type: REMOVE_BOOK,
-  id,
-});
+const removeBook = (itemId) => (dispatch) => fetch(`${apiUrl}/${itemId}`, {
+  method: 'DELETE',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ item_id: itemId }),
+})
+  .then((response) => response.text())
+  .then((data) => dispatch({ type: REMOVE_BOOK, item_id: itemId, data }));
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
