@@ -5,8 +5,10 @@ import { removeBook } from '../../redux/books/books';
 
 const BooksInfo = (props) => {
   const {
-    title, category, item_id,
+    item_id, title, category,
   } = props;
+
+  console.log(props);
 
   const dispatch = useDispatch();
 
@@ -24,8 +26,8 @@ const BooksInfo = (props) => {
 };
 
 BooksInfo.propTypes = {
-  title: PropTypes.string.isRequired,
   item_id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
 };
 

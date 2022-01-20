@@ -4,10 +4,10 @@ const FETCH_BOOK = 'bookStore/books/FETCH_BOOK';
 const apiUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/QKoyZOzmkUQhnurV30Gv/books';
 const initialState = [];
 
-const fetchingBook = async () => {
-  const response = await fetch(apiUrl).then((data) => data.json());
-  return response;
-};
+// const fetchingBook = async () => {
+//   const response = await fetch(apiUrl).then((data) => data.json());
+//   return response;
+// };
 
 const postingBook = async (book) => {
   await fetch(apiUrl, {
@@ -42,20 +42,13 @@ export const removeBook = (id) => async (dispatch) => {
 };
 
 export const fetchBook = () => async (dispatch) => {
-  const data = await fetchingBook();
-  const books = [];
-  [...Object.entries(data)].forEach((item) => {
-    const book = {
-      item_id: item[0],
-      title: item[1][0].title,
-      category: item[1][0].category,
-    };
-    books.push(book);
-  });
+  const data = await fetch(apiUrl, {
+    method: 'GET',
+  }).then((response) => response.json());
 
   dispatch({
     type: FETCH_BOOK,
-    payload: books,
+    payload: data,
   });
 };
 
