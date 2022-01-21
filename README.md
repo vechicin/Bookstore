@@ -13,6 +13,12 @@ Additional description about the project and its features.
 - JavaScript, HTML, CSS
 - React/Redux
 
+## Running Project Locally 
+
+To run the project locally make sure you run this command on your terminal
+
+`git clone git@github.com:vechicin/Bookstore.git`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -20,6 +26,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Installs the required dependencies in order to run the project.
 
 ### `npm start`
 
