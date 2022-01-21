@@ -9,7 +9,22 @@ const BookContainer = ({ books }) => (
     <ul className="booklist">
       {books.map((book) => (
         <li className="book" key={book.item_id}>
-          <Book book={book} />
+          <div className="book-info">
+            <Book book={book} />
+          </div>
+          <div className="percentages-container">
+            <div className="circle" />
+            <p className="percentages">
+              {Math.floor(Math.random() * 100)}
+              %
+              <span>Completed</span>
+            </p>
+          </div>
+          <div className="chapters">
+            <p className="current">CURRENT CHAPTER</p>
+            <p className="chapter">CHAPTER 17</p>
+            <button type="button">UPDATE PROGRESS</button>
+          </div>
         </li>
       ))}
     </ul>

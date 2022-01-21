@@ -14,9 +14,14 @@ const Book = ({ book }) => {
     <>
       <p className="category">{book.category}</p>
       <p className="title">{book.title}</p>
-      <button className="remove" type="button" onClick={remove}>
-        REMOVE
-      </button>
+      <p className="author">Author</p>
+      <div className="button-container">
+        <button className="remove" type="button">Comments</button>
+        <button className="remove" type="button" onClick={remove}>
+          Remove
+        </button>
+        <button className="remove" type="button">Edit</button>
+      </div>
     </>
   );
 };
