@@ -37,7 +37,6 @@ h1 {
 }
 
 .container {
-  height: fit-content;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.05);
 }
@@ -79,7 +78,7 @@ h1 {
   margin-bottom: 1.2rem;
 }
 
-.remove {
+button {
   width: 11.5rem;
   height: 2.063rem;
   background-color: #0290ff;
@@ -90,4 +89,38 @@ h1 {
   font-size: 0.813rem;
   letter-spacing: 0.5px;
   color: #fff;
+}
+
+form {
+  font-family: 'Montserrat', sans-serif;
+  width: 75rem;
+  margin-left: 8rem;
+  border-top: solid 1px #e8e8e8;
+}
+
+h2 {
+  margin-top: 1.813rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.18px;
+  color: #888;
+  margin-bottom: 1.2rem;
+}
+
+.add-input {
+  width: 30rem;
+  height: 2.813rem;
+  padding: 0.813rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: #c4c4c4;
+  letter-spacing: -0.15px;
+  margin-right: 1.75rem;
+  border: solid 1px #e8e8e8;
+  border-radius: 4px;
+  margin-bottom: 16.5rem;
+}
+
+.add-button {
+  font-weight: bold;
+  height: 2.813rem;
 }

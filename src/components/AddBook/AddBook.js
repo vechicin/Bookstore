@@ -33,24 +33,27 @@ const AddBook = () => {
     <form>
       <h2>ADD NEW BOOK</h2>
       <input
+        className="add-input"
         type="text"
-        placeholder="Enter book title"
+        placeholder="Book title"
         value={bookTitle}
         onChange={BookTitleInputHandler}
       />
       <input
+        className="add-input"
         type="text"
-        placeholder="Enter book category"
+        placeholder="Category"
         value={bookCategory}
         onChange={CategoryHandler}
         required
       />
       <button
+        className="add-button"
         type="submit"
         onClick={submitBookToStore}
         required
       >
-        Add book
+        ADD BOOK
       </button>
     </form>
   );
