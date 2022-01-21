@@ -3,3 +3,35 @@
   margin: 0;
   padding: 0;
 }
+
+nav {
+  display: flex;
+  height: 6rem;
+  align-items: center;
+  padding-left: 6rem;
+  gap: 3rem;
+  border-bottom: solid 1px #e8e8e8;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navlinks {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  font-size: 0.813rem;
+  letter-spacing: 1.9px;
+}
+
+a {
+  text-decoration: none;
+  color: #121212;
+}
+
+h1 {
+  font-size: 1.875rem;
+  color: #0290ff;
+}
+
+#categories-link {
+  opacity: 0.5;
+}

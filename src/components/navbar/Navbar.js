@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => (
   <nav>
-    <h1>Bookstore</h1>
-    <ul>
+    <h1>Bookstore CMS</h1>
+    <ul className="navlinks">
       <li>
-        <Link to="/">Books</Link>
+        <Link to="/">BOOKS</Link>
       </li>
       <li>
-        <Link to="/categories">Categories</Link>
+        <Link id="categories-link" to="/categories">CATEGORIES</Link>
       </li>
     </ul>
   </nav>
