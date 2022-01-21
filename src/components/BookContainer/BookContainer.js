@@ -5,7 +5,7 @@ import AddBook from '../AddBook/AddBook';
 import Book from '../Book/Book';
 
 const BookContainer = ({ books }) => (
-  <div>
+  <section>
     <ul>
       {books.map((book) => (
         <li key={book.item_id}>
@@ -14,7 +14,7 @@ const BookContainer = ({ books }) => (
       ))}
     </ul>
     <AddBook />
-  </div>
+  </section>
 );
 
 BookContainer.propTypes = {

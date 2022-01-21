@@ -22,7 +22,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<BookContainer books={books} />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/bookstore" element={<BookContainer books={books} />} />
         </Routes>
       </div>
     </>
