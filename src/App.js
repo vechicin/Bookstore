@@ -1,21 +1,31 @@
-import React from 'react';
-import {
-  BrowserRouter, Routes, Route,
-} from 'react-router-dom';
-import Navbar from './components/navbar/Navbar';
-import Books from './components/books/Books';
+import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { fetchBook } from './redux/books/books';
+import Nav from './components/navbar/Navbar';
+import BookContainer from './components/BookContainer/BookContainer';
 import Categories from './components/categories/Categories';
 
-const App = () => (
-  <div className="Bookstore">
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={(<Books />)} />
-        <Route path="/categories" element={(<Categories />)} />
-      </Routes>
-    </BrowserRouter>
-  </div>
-);
+const App = () => {
+  const books = useSelector((state) => state.books);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchBook());
+  }, []);
+
+  return (
+    <>
+      <Nav />
+      <div>
+        <Routes>
+          <Route path="/" element={<BookContainer books={books} />} />
+          <Route path="/categories" element={<Categories />} />
+        </Routes>
+      </div>
+    </>
+  );
+};
 
 export default App;
