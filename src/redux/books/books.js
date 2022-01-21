@@ -29,13 +29,13 @@ export const removeBook = (id) => async (dispatch) => {
 export const fetchBook = () => async (dispatch) => {
   const data = await fetchBookAPI();
   const books = [];
-  [...Object.entries(data)].forEach((b) => {
-    const book = {
-      item_id: b[0],
-      title: b[1][0].title,
-      category: b[1][0].category,
+  [...Object.entries(data)].forEach((book) => {
+    const fetchedBook = {
+      item_id: book[0],
+      title: book[1][0].title,
+      category: book[1][0].category,
     };
-    books.push(book);
+    books.push(fetchedBook);
   });
 
   dispatch({
