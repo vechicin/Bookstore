@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchBooks } from './redux/books/books';
+import { fetchBook } from './redux/books/books';
 import Nav from './components/navbar/Navbar';
-import BookList from './components/BookList/BookList';
+import BookContainer from './components/BookContainer/BookContainer';
 import Categories from './components/categories/Categories';
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchBooks());
+    dispatch(fetchBook());
   }, []);
 
   return (
@@ -20,9 +20,9 @@ const App = () => {
       <Nav />
       <div>
         <Routes>
-          <Route path="/" element={<BookList books={books} />} />
+          <Route path="/" element={<BookContainer books={books} />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/bookstore" element={<BookList books={books} />} />
+          <Route path="/bookstore" element={<BookContainer books={books} />} />
         </Routes>
       </div>
     </>

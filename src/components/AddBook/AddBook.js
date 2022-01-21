@@ -1,60 +1,55 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { v4 as uuid } from 'uuid';
+import { v4 } from 'uuid';
 
 import { addBook } from '../../redux/books/books';
 
 const AddBook = () => {
   const [bookTitle, setBookTitle] = useState('');
-  const [categoryValue, setCategoryValue] = useState('none');
+  const [bookCategory, setBookCategory] = useState('');
   const dispatch = useDispatch();
 
   const BookTitleInputHandler = (e) => {
     setBookTitle(e.target.value);
   };
 
-  const submitBookHandler = (e) => {
+  const CategoryHandler = (e) => {
+    setBookCategory(e.target.value);
+  };
+
+  const submitBookToStore = (e) => {
     e.preventDefault();
     const newBook = {
-      item_id: uuid(),
-      title: bookTitle.trim(),
-      category: categoryValue,
+      item_id: v4(),
+      title: bookTitle,
+      category: bookCategory,
     };
     dispatch(addBook(newBook));
     setBookTitle('');
-    setCategoryValue('none');
+    setBookCategory('');
   };
 
   return (
     <form>
       <input
         type="text"
-        placeholder="Add a book title"
+        placeholder="Enter book title"
         value={bookTitle}
         onChange={BookTitleInputHandler}
       />
-      <label htmlFor="categories">
-        Choose a category:
-        <select
-          id="categories"
-          value={categoryValue}
-          onChange={(e) => setCategoryValue(e.target.value)}
-        >
-          <option value="none" disabled hidden>
-            Categories
-          </option>
-          <option value="action">Action</option>
-          <option value="drama">Drama</option>
-          <option value="sci-fi">Sci-Fi</option>
-          <option value="horror">Horror</option>
-        </select>
-      </label>
+      <input
+        type="text"
+        placeholder="Enter book category"
+        value={bookCategory}
+        onChange={CategoryHandler}
+        required
+      />
       <button
         type="submit"
-        onClick={submitBookHandler}
-        disabled={bookTitle.trim() === '' || categoryValue === 'none'}
+        onClick={submitBookToStore}
+        required
       >
-        Add
+        Add book
       </button>
     </form>
   );

@@ -1,17 +1,17 @@
 import {
-  fetchBooksAsync,
-  addBookAsync,
-  removeBookAsync,
+  fetchBookAPI,
+  addBookAPI,
+  removeBookAPI,
 } from '../../API/APIHelper';
 
 const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
-const FETCH_BOOKS = 'bookStore/books/FETCH_BOOKS';
+const FETCH_BOOK = 'bookStore/books/FETCH_BOOK';
 
 const initialState = [];
 
 export const addBook = (newBook) => async (dispatch) => {
-  await addBookAsync(newBook);
+  await addBookAPI(newBook);
   dispatch({
     type: ADD_BOOK,
     payload: newBook,
@@ -19,15 +19,15 @@ export const addBook = (newBook) => async (dispatch) => {
 };
 
 export const removeBook = (id) => async (dispatch) => {
-  await removeBookAsync(id);
+  await removeBookAPI(id);
   dispatch({
     type: REMOVE_BOOK,
     payload: id,
   });
 };
 
-export const fetchBooks = () => async (dispatch) => {
-  const data = await fetchBooksAsync();
+export const fetchBook = () => async (dispatch) => {
+  const data = await fetchBookAPI();
   const books = [];
   [...Object.entries(data)].forEach((b) => {
     const book = {
@@ -39,14 +39,14 @@ export const fetchBooks = () => async (dispatch) => {
   });
 
   dispatch({
-    type: FETCH_BOOKS,
+    type: FETCH_BOOK,
     payload: books,
   });
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_BOOKS:
+    case FETCH_BOOK:
       return action.payload;
     case ADD_BOOK:
       return [...state, action.payload];

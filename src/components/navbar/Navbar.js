@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Nav = () => (
-  <nav>
-    <Link to="/">
-      <h1>Bookstore</h1>
-    </Link>
+const Navbar = () => (
+  <Navbar>
+    <h1>Bookstore</h1>
     <ul>
       <li>
         <Link to="/">Books</Link>
@@ -14,7 +12,7 @@ const Nav = () => (
         <Link to="/categories">Categories</Link>
       </li>
     </ul>
-  </nav>
+  </Navbar>
 );
 
-export default Nav;
+export default Navbar;
