@@ -12,11 +12,16 @@ const Book = ({ book }) => {
 
   return (
     <>
-      <p>{book.title}</p>
-      <p>{book.category}</p>
-      <button type="button" onClick={remove}>
-        Remove
-      </button>
+      <p className="category">{book.category}</p>
+      <p className="title">{book.title}</p>
+      <p className="author">Author</p>
+      <div className="button-container">
+        <button className="remove" type="button">Comments</button>
+        <button className="remove" type="button" onClick={remove}>
+          Remove
+        </button>
+        <button className="remove" type="button">Edit</button>
+      </div>
     </>
   );
 };
