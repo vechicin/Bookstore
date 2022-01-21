@@ -31,6 +31,7 @@ const AddBook = () => {
 
   return (
     <form>
+      <h2>ADD NEW BOOK</h2>
       <input
         type="text"
         placeholder="Enter book title"

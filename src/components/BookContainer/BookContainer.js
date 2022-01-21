@@ -6,9 +6,9 @@ import Book from '../Book/Book';
 
 const BookContainer = ({ books }) => (
   <section>
-    <ul>
+    <ul className="booklist">
       {books.map((book) => (
-        <li key={book.item_id}>
+        <li className="book" key={book.item_id}>
           <Book book={book} />
         </li>
       ))}

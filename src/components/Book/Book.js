@@ -12,10 +12,10 @@ const Book = ({ book }) => {
 
   return (
     <>
-      <p>{book.title}</p>
-      <p>{book.category}</p>
-      <button type="button" onClick={remove}>
-        Remove
+      <p className="category">{book.category}</p>
+      <p className="title">{book.title}</p>
+      <button className="remove" type="button" onClick={remove}>
+        REMOVE
       </button>
     </>
   );
