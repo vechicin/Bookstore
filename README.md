@@ -13,6 +13,9 @@ Additional description about the project and its features.
 - JavaScript, HTML, CSS
 - React/Redux
 
+## Live Demo
+Take a look at the project's live demo [here](https://vechicin-bookstore.herokuapp.com/)
+
 ## Running Project Locally 
 
 To run the project locally make sure you run this command on your terminal
